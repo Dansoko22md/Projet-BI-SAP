@@ -1,6 +1,6 @@
 # 🌱 Optimisation Durable et Gestion Écologique avec SAP MM et PM dans l’Industrie Agro-Alimentaire 🌿
 
-## 🚀 Description
+##  Description
 
 Ce projet académique a pour objectif de développer un **système avancé de gestion durable** et **responsabilité environnementale** pour une société agro-alimentaire. Il centralise et optimise les données environnementales afin d'améliorer la performance énergétique, d'assurer la conformité réglementaire et de favoriser une gestion durable des ressources.
 
@@ -73,4 +73,4 @@ L'objectif de ce projet est de renforcer la **conformité environnementale** tou
 
 ### 1. Clonez le Repository
 ```bash
-git clone https://github.com/votre-utilisateur/nom-du-repository.git
+git clone https://github.com/Dansoko22md/Projet-BI-SAP.git
