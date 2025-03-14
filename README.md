@@ -1,6 +1,6 @@
 # Optimisation Durable et Gestion Écologique avec SAP MM et PM
 
-![Optimisation Durable](https://via.placeholder.com/800x400?text=Optimisation+Durable+SAP+MM+PM)
+![Optimisation Durable](./image.png)
 
 ## 📌 Contexte
 Ce projet vise à améliorer la gestion de la durabilité et de la responsabilité environnementale dans l'industrie agroalimentaire en exploitant les modules **SAP MM (Materials Management)** et **SAP PM (Plant Maintenance)**. L'objectif est de centraliser et d'optimiser les données environnementales afin d'améliorer la performance énergétique, d'assurer la conformité réglementaire et de gérer durablement les ressources.
