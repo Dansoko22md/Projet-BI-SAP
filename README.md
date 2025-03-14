@@ -69,7 +69,7 @@ python main.py
 Ce projet a été développé dans le cadre du programme **Esprit School of Engineering**. Il vise à appliquer des concepts avancés de gestion des ressources et d’intelligence artificielle pour optimiser la durabilité industrielle.
 
 ## 📢 Acknowledgments
-Développé par ECOVISION sous la supervision de [Nom du Professeur].
+Développé par ECOVISION sous la supervision de Mm Zaineb Abidi et Mm Salma.
 
 ## 📎 Liens Utiles
 - 📌 [SAP MARD Table](https://leanx.eu/en/sap/table/mard.html)
