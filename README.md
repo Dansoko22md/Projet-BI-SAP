@@ -1,5 +1,7 @@
 # Optimisation Durable et Gestion Écologique avec SAP MM et PM
 
+![Optimisation Durable](https://via.placeholder.com/800x400?text=Optimisation+Durable+SAP+MM+PM)
+
 ## 📌 Contexte
 Ce projet vise à améliorer la gestion de la durabilité et de la responsabilité environnementale dans l'industrie agroalimentaire en exploitant les modules **SAP MM (Materials Management)** et **SAP PM (Plant Maintenance)**. L'objectif est de centraliser et d'optimiser les données environnementales afin d'améliorer la performance énergétique, d'assurer la conformité réglementaire et de gérer durablement les ressources.
 
@@ -67,12 +69,13 @@ python main.py
 Ce projet a été développé dans le cadre du programme **Esprit School of Engineering**. Il vise à appliquer des concepts avancés de gestion des ressources et d’intelligence artificielle pour optimiser la durabilité industrielle.
 
 ## 📢 Acknowledgments
-Développé par [Votre Nom / Équipe] sous la supervision de [Nom du Professeur].
+Développé par ECOVISION sous la supervision de [Nom du Professeur].
 
 ## 📎 Liens Utiles
 - 📌 [SAP MARD Table](https://leanx.eu/en/sap/table/mard.html)
 - 📌 [SAP QMEL Table](https://leanx.eu/en/sap/table/qmel.html)
 - 📌 [Esprit School of Engineering](https://www.esprit.tn)
 
----
-📌 **N'oubliez pas d'ajouter des "topics" pertinents** sur GitHub pour améliorer la visibilité du projet ! Ex : `sap-mm`, `sap-pm`, `sustainability`, `machine-learning`, `data-analysis`.
+## 🔖 Topics GitHub
+Ajoutez ces "topics" sur GitHub pour améliorer la visibilité du projet :
+`sap-mm`, `sap-pm`, `sustainability`, `machine-learning`, `data-analysis`, `industrial-optimization`, `predictive-maintenance`, `carbon-footprint`, `energy-efficiency`, `supply-chain`, `esprit-school-of-engineering`.
