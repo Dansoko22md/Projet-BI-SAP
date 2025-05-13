@@ -1,0 +1,252 @@
+<section class="dashboard-container">
+  <div class="dashboard-header">
+    <div class="dashboard-header__decoration"></div>
+    <h1 class="dashboard-header__title">Environmental Dashboard</h1>
+    <p class="dashboard-header__subtitle">Overview of key environmental indicators and their evolution</p>
+  </div>
+
+  <div class="loading-spinner" *ngIf="loading">
+    <div class="loading-spinner__circle"></div>
+  </div>
+
+  <div class="error-message" *ngIf="error">
+    <div class="error-message__icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 8V12M12 16H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    {{ error }}
+  </div>
+
+  <div class="metrics-grid" *ngIf="summaryData && summaryData.summary">
+    <!-- Carbon Footprint -->
+    <div class="metric-card">
+      <div class="metric-card__header metric-card__header--carbon">
+        <h2 class="metric-card__title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3C8.57143 3 6 5.57143 6 9C6 10.8478 6.84285 12.551 8.2 13.7M12 3C15.4286 3 18 5.57143 18 9C18 10.8478 17.1571 12.551 15.8 13.7M12 3V6M8.2 13.7C9.33204 14.6937 10.6764 15.315 12.1814 15.5249M8.2 13.7L6 16M15.8 13.7C14.668 14.6937 13.3236 15.315 11.8186 15.5249M15.8 13.7L18 16M12.1814 15.5249C12.1211 15.5083 12.0607 15.4925 12 15.4774M12.1814 15.5249L12 19M11.8186 15.5249C11.879 15.5083 11.9393 15.4925 12 15.4774M11.8186 15.5249L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Carbon Footprint
+        </h2>
+      </div>
+      <div class="metric-card__icon metric-card__icon--carbon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13 16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16C11 15.4477 11.4477 15 12 15C12.5523 15 13 15.4477 13 16Z" fill="currentColor"/>
+          <path d="M13 12C13 12.5523 12.5523 13 12 13C11.4477 13 11 12.5523 11 12C11 11.4477 11.4477 11 12 11C12.5523 11 13 11.4477 13 12Z" fill="currentColor"/>
+          <path d="M13 8C13 8.55228 12.5523 9 12 9C11.4477 9 11 8.55228 11 8C11 7.44772 11.4477 7 12 7C12.5523 7 13 7.44772 13 8Z" fill="currentColor"/>
+          <path d="M13.5 3.5L12 2L10.5 3.5L12 5L13.5 3.5Z" fill="currentColor"/>
+          <path d="M10.5 20.5L12 19L13.5 20.5L12 22L10.5 20.5Z" fill="currentColor"/>
+          <path d="M3.5 10.5L2 12L3.5 13.5L5 12L3.5 10.5Z" fill="currentColor"/>
+          <path d="M20.5 10.5L19 12L20.5 13.5L22 12L20.5 10.5Z" fill="currentColor"/>
+          <path d="M7.05 5.63L6 7.07L7.05 8.5L8.5 7.07L7.05 5.63Z" fill="currentColor"/>
+          <path d="M16.95 15.5L15.5 16.93L16.95 18.37L18.37 16.93L16.95 15.5Z" fill="currentColor"/>
+          <path d="M7.05 18.37L8.5 16.93L7.05 15.5L5.63 16.93L7.05 18.37Z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="metric-card__body">
+        <div class="metric-card__values">
+          <div class="metric-card__value-group">
+            <span class="metric-card__label">Latest value</span>
+            <div class="metric-card__number metric-card__number--carbon">
+              {{ formatValue(summaryData.summary.carbon_footprint.last_value, 'carbon_footprint') }}
+            </div>
+          </div>
+          <div class="metric-card__value-group">
+            <span class="metric-card__label">Annual trend</span>
+            <div class="metric-card__trend" [ngClass]="getTrendClass(summaryData.summary.carbon_footprint.trend, 'carbon_footprint')">
+              <svg *ngIf="summaryData.summary.carbon_footprint.trend > 0" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <svg *ngIf="summaryData.summary.carbon_footprint.trend < 0" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 7L17 17M17 17H7M17 17V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              {{ summaryData.summary.carbon_footprint.trend.toFixed(2) }}%
+            </div>
+          </div>
+        </div>
+        <div class="metric-card__average">
+          Average: {{ formatValue(summaryData.summary.carbon_footprint.avg, 'carbon_footprint') }}
+        </div>
+        <div class="metric-card__action">
+          <a routerLink="/admin/predictions" [queryParams]="{type: 'carbon_footprint'}">
+            <span>View predictions</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Water Consumption -->
+    <div class="metric-card">
+      <div class="metric-card__header metric-card__header--water">
+        <h2 class="metric-card__title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 22C16.4183 22 20 18.4183 20 14C20 9.58172 12 2 12 2C12 2 4 9.58172 4 14C4 18.4183 7.58172 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Water Consumption
+        </h2>
+      </div>
+      <div class="metric-card__icon metric-card__icon--water">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 22C16.4183 22 20 18.4183 20 14C20 9.58172 12 2 12 2C12 2 4 9.58172 4 14C4 18.4183 7.58172 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M9 15C9 16.6569 10.3431 18 12 18C13.6569 18 15 16.6569 15 15C15 13.3431 12 10 12 10C12 10 9 13.3431 9 15Z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="metric-card__body">
+        <div class="metric-card__values">
+          <div class="metric-card__value-group">
+            <span class="metric-card__label">Latest value</span>
+            <div class="metric-card__number metric-card__number--water">
+              {{ formatValue(summaryData.summary.water_consumption.last_value, 'water_consumption') }}
+            </div>
+          </div>
+          <div class="metric-card__value-group">
+            <span class="metric-card__label">Annual trend</span>
+            <div class="metric-card__trend" [ngClass]="getTrendClass(summaryData.summary.water_consumption.trend, 'water_consumption')">
+              <svg *ngIf="summaryData.summary.water_consumption.trend > 0" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <svg *ngIf="summaryData.summary.water_consumption.trend < 0" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 7L17 17M17 17H7M17 17V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              {{ summaryData.summary.water_consumption.trend.toFixed(2) }}%
+            </div>
+          </div>
+        </div>
+        <div class="metric-card__average">
+          Average: {{ formatValue(summaryData.summary.water_consumption.avg, 'water_consumption') }}
+        </div>
+        <div class="metric-card__action">
+          <a routerLink="/predictions" [queryParams]="{type: 'water_consumption'}">
+            <span>View predictions</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Energy Consumption -->
+    <div class="metric-card">
+      <div class="metric-card__header metric-card__header--energy">
+        <h2 class="metric-card__title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Energy Consumption
+        </h2>
+      </div>
+      <div class="metric-card__icon metric-card__icon--energy">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="metric-card__body">
+        <div class="metric-card__values">
+          <div class="metric-card__value-group">
+            <span class="metric-card__label">Latest value</span>
+            <div class="metric-card__number metric-card__number--energy">
+              {{ formatValue(summaryData.summary.energy_consumption.last_value, 'energy_consumption') }}
+            </div>
+          </div>
+          <div class="metric-card__value-group">
+            <span class="metric-card__label">Annual trend</span>
+            <div class="metric-card__trend" [ngClass]="getTrendClass(summaryData.summary.energy_consumption.trend, 'energy_consumption')">
+              <svg *ngIf="summaryData.summary.energy_consumption.trend > 0" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <svg *ngIf="summaryData.summary.energy_consumption.trend < 0" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 7L17 17M17 17H7M17 17V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              {{ summaryData.summary.energy_consumption.trend.toFixed(2) }}%
+            </div>
+          </div>
+        </div>
+        <div class="metric-card__average">
+          Average: {{ formatValue(summaryData.summary.energy_consumption.avg, 'energy_consumption') }}
+        </div>
+        <div class="metric-card__action">
+          <a routerLink="/predictions" [queryParams]="{type: 'energy_consumption'}">
+            <span>View predictions</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CO2 Level -->
+    <div class="metric-card">
+      <div class="metric-card__header metric-card__header--co2">
+        <h2 class="metric-card__title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 12H15M7 16.9324C4.6 16.4367 3 14.419 3 12C3 9.23858 5.23858 7 8 7H16C18.7614 7 21 9.23858 21 12C21 14.419 19.4 16.4367 17 16.9324M7 16.9324C7.6 16.9775 8.3 17 9 17H15C15.7 17 16.4 16.9775 17 16.9324M7 16.9324V20M17 16.9324V20M12 7V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          CO2 Level
+        </h2>
+      </div>
+      <div class="metric-card__icon metric-card__icon--co2">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 12H15M7 16.9324C4.6 16.4367 3 14.419 3 12C3 9.23858 5.23858 7 8 7H16C18.7614 7 21 9.23858 21 12C21 14.419 19.4 16.4367 17 16.9324M7 16.9324C7.6 16.9775 8.3 17 9 17H15C15.7 17 16.4 16.9775 17 16.9324M7 16.9324V20M17 16.9324V20M12 7V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="metric-card__body">
+        <div class="metric-card__values">
+          <div class="metric-card__value-group">
+            <span class="metric-card__label">Latest value</span>
+            <div class="metric-card__number metric-card__number--co2">
+              {{ formatValue(summaryData.summary.climate_co2.last_value, 'climate_co2') }}
+            </div>
+          </div>
+          <div class="metric-card__value-group">
+            <span class="metric-card__label">Annual trend</span>
+            <div class="metric-card__trend" [ngClass]="getTrendClass(summaryData.summary.climate_co2.trend, 'climate_co2')">
+              <svg *ngIf="summaryData.summary.climate_co2.trend > 0" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <svg *ngIf="summaryData.summary.climate_co2.trend < 0" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 7L17 17M17 17H7M17 17V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              {{ summaryData.summary.climate_co2.trend.toFixed(2) }}%
+            </div>
+          </div>
+        </div>
+        <div class="metric-card__average">
+          Average: {{ formatValue(summaryData.summary.climate_co2.avg, 'climate_co2') }}
+        </div>
+        <div class="metric-card__action">
+          <a routerLink="/predictions" [queryParams]="{type: 'climate_co2'}">
+            <span>View predictions</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="empty-state" *ngIf="!loading && (!summaryData || !summaryData.summary)">
+    <div class="empty-state__icon">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16C11 15.4477 11.4477 15 12 15C12.5523 15 13 15.4477 13 16Z" fill="currentColor"/>
+        <path d="M12 13V7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2"/>
+      </svg>
+    </div>
+    <h2 class="empty-state__title">No data available</h2>
+    <p class="empty-state__message">Please check the connection to the data server or contact the administrator.</p>
+  </div>
+
+  <div class="cta-container">
+    <a routerLink="/dashboard/admin/predictions" class="primary-button">
+      <span>Make a new prediction</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 5L21 12M21 12L14 19M21 12H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</section>

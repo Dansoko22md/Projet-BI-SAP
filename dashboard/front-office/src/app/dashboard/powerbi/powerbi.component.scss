@@ -1,0 +1,171 @@
+// Variables
+$primary-color: #0078d4; // PowerBI blue
+$secondary-color: #107c10; // Green for success elements
+$text-primary: #252525;
+$text-secondary: #666;
+$border-radius: 12px;
+$box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+$transition-speed: 0.3s;
+
+:host {
+  display: block;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+.dashboard-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  
+  h2 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    color: $text-primary;
+    margin: 0;
+    position: relative;
+    
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, $primary-color, lighten($primary-color, 20%));
+      border-radius: 3px;
+    }
+  }
+  
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: $text-secondary;
+    padding: 0.5rem 1rem;
+    background-color: rgba($primary-color, 0.05);
+    border-radius: 2rem;
+    
+    svg {
+      color: $primary-color;
+    }
+  }
+}
+
+.dashboard-frame {
+  position: relative;
+  background-color: #fff;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+  transition: transform $transition-speed ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  }
+  
+  .frame-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, 
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0) 20%,
+      rgba(255, 255, 255, 0) 80%,
+      rgba(255, 255, 255, 0.05) 100%);
+    pointer-events: none;
+    z-index: 10;
+    border-radius: $border-radius;
+  }
+  
+  iframe {
+    border: none;
+    width: 100%;
+    height: 700px;
+    background-color: #f9f9f9;
+  }
+  
+  .empty-state {
+    height: 700px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: $text-secondary;
+    border-radius: $border-radius;
+    
+    svg {
+      color: lighten($text-secondary, 20%);
+      margin-bottom: 1.5rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+  
+  .feature-card {
+    background: linear-gradient(145deg, rgba($secondary-color, 0.05) 0%, rgba($secondary-color, 0.1) 100%);
+    border-radius: 10px;
+    padding: 1.25rem;
+    border-left: 4px solid $secondary-color;
+    transition: all $transition-speed ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba($secondary-color, 0.1);
+    }
+    
+    h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: darken($secondary-color, 5%);
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+    }
+    
+    p {
+      font-size: 0.875rem;
+      color: rgba($text-primary, 0.8);
+      margin: 0;
+      line-height: 1.5;
+    }
+  }
+}
+
+// Responsive adjustments
+@media screen and (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    
+    h2:after {
+      width: 40px;
+    }
+  }
+  
+  .dashboard-frame iframe,
+  .dashboard-frame .empty-state {
+    height: 500px;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}

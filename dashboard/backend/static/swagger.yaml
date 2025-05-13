@@ -1,0 +1,17 @@
+openapi: 3.0.0
+info:
+  title: API Recommandation Fournisseurs
+  version: 1.0.0
+paths:
+  /recommend:
+    get:
+      summary: Recommander des fournisseurs
+      responses:
+        '200':
+          description: Liste des recommandations
+  /train:
+    post:
+      summary: Entraîner le modèle
+      responses:
+        '200':
+          description: Modèle entraîné avec succès

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplier Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .header-section {
+            background: linear-gradient(120deg, #2980b9, #8e44ad);
+            color: white;
+            padding: 30px 0;
+            margin-bottom: 40px;
+        }
+        .detail-card {
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        .detail-header {
+            background-color: #f1f9ff;
+            padding: 20px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .detail-body {
+            padding: 25px;
+        }
+        .metric-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            height: 100%;
+        }
+        .metric-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .metric-label {
+            color: #6c757d;
+            font-size: 14px;
+        }
+        .environmental-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 20px;
+            background-color: #e1f5fe;
+            color: #0288d1;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-section">
+        <div class="container">
+            <h1>{{ supplier.supplier_name }}</h1>
+            <p class="lead">Supplier ID: {{ supplier.supplier_id }}</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="mb-4">
+            <a href="/recommendations" class="btn btn-primary">
+                <i class="fas fa-arrow-left me-2"></i> Back to Recommendations
+            </a>
+        </div>
+
+        <div class="detail-card">
+            <div class="detail-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>{{ supplier.supplier_name }}</h2>
+                        <p class="text-muted">{{ supplier.location }}</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p><i class="fas fa-envelope me-2"></i> {{ supplier.contact_email }}</p>
+                        <p><i class="fas fa-phone me-2"></i> {{ supplier.phone_number }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-body">
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="metric-card">
+                            <div class="metric-icon text-success">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="metric-value">{{ supplier.renewable_energy_percentage }}%</div>
+                            <div class="metric-label">Renewable Energy</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="metric-card">
+                            <div class="metric-icon text-primary">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <div class="metric-value">{{ supplier.transport_type }}</div>
+                            <div class="metric-label">Transport Type</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="metric-card">
+                            <div class="metric-icon text-warning">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                      <div class="metric-value">
+    {{ "%.1f"|format(supplier.avg_water_consumption if supplier.avg_water_consumption is not none else 0) }}
+</div>
+
+                            <div class="metric-label">Avg. Water Consumption (L)</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="metric-card">
+                            <div class="metric-icon text-danger">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                          <div class="metric-value">
+    {{ "%.2f"|format(supplier.avg_carbon_footprint if supplier.avg_carbon_footprint is not none else 0) }}
+</div>
+
+                            <div class="metric-label">Avg. Carbon Footprint (kg CO2e)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <h4>Environmental Certifications</h4>
+                        {% if supplier.environmental_certifications and supplier.environmental_certifications != 'None' %}
+                            {% for cert in supplier.environmental_certifications.split(',') %}
+                                <span class="environmental-badge">{{ cert.strip() }}</span>
+                            {% endfor %}
+                        {% else %}
+                            <p class="text-muted">No certifications listed</p>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Sustainability Program</h4>
+                        <p>{{ supplier.sustainability_program if supplier.sustainability_program and supplier.sustainability_program != 'None' else 'No program listed' }}</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Transport Information</h4>
+                        <p><strong>Transport Type:</strong> {{ supplier.transport_type }}</p>
+                     <p><strong>Average Transport Distance:</strong> {{ "%.1f"|format(supplier.avg_transport_distance if supplier.avg_transport_distance is not none else 0) }} km</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
