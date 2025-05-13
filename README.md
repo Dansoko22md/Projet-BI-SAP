@@ -1,76 +1,81 @@
-# 🌱 Optimisation Durable et Gestion Écologique avec SAP MM et PM dans l’Industrie Agro-Alimentaire 🌿
+# Optimisation Durable et Gestion Écologique avec SAP MM et PM
 
-##  Description
+![Optimisation Durable](./image.png)
 
-Ce projet académique a pour objectif de développer un **système avancé de gestion durable** et **responsabilité environnementale** pour une société agro-alimentaire. Il centralise et optimise les données environnementales afin d'améliorer la performance énergétique, d'assurer la conformité réglementaire et de favoriser une gestion durable des ressources.
+## 📌 Contexte
+Ce projet vise à améliorer la gestion de la durabilité et de la responsabilité environnementale dans l'industrie agroalimentaire en exploitant les modules **SAP MM (Materials Management)** et **SAP PM (Plant Maintenance)**. L'objectif est de centraliser et d'optimiser les données environnementales afin d'améliorer la performance énergétique, d'assurer la conformité réglementaire et de gérer durablement les ressources.
 
-**Modules clés utilisés :**  
-- **SAP MM (Materials Management)** : Optimisation des matières premières, des achats, des stocks et des fournisseurs.
-- **SAP PM (Plant Maintenance)** : Planification et exécution de la maintenance des équipements industriels pour garantir leur performance optimale et réduire l'empreinte écologique.
+## 🔍 Fonctionnalités Clés
+### 🌱 Suivi des émissions de CO₂
+- Mesure des émissions par site, processus ou type d’énergie.
+- Analyse de l'empreinte carbone et identification des axes d'amélioration.
 
----
+### ⚡ Gestion des ressources énergétiques
+- Identification des équipements à forte consommation.
+- Réduction des coûts énergétiques grâce à des indicateurs de performance.
 
-## 🛠 Fonctionnalités Principales
+### 📦 Gestion optimisée des matières premières
+- Suivi des émissions de CO₂ liées aux matières premières.
+- Promotion des matériaux recyclables.
+- Gestion efficace des stocks pour éviter les ruptures.
 
-1. **Suivi des émissions de CO₂**  
-   - Mesure des émissions par site, processus ou type d’énergie pour analyser et réduire l'empreinte carbone.
+### 🔄 Optimisation des ressources en fonction des conditions environnementales
+- Analyse de l’impact des conditions climatiques sur les équipements.
+- Résilience accrue de la chaîne d'approvisionnement.
 
-2. **Gestion des Ressources Énergétiques**  
-   - Identification des équipements à forte consommation et optimisation des coûts énergétiques via des indicateurs de performance.
+### 🤝 Collaboration avec les fournisseurs
+- Évaluation des performances des fournisseurs en fonction de critères environnementaux.
+- Amélioration de la durabilité de la chaîne d'approvisionnement.
 
-3. **Optimisation des Matières Premières**  
-   - Calcul des émissions de CO₂ liées aux matières premières et gestion des stocks pour promouvoir des matériaux recyclables.
+### 🛠 Maintenance prédictive des équipements
+- Anticipation des pannes pour optimiser les cycles de maintenance.
 
-4. **Optimisation de la Performance face aux Conditions Environnementales**  
-   - Analyse de l'impact des conditions environnementales sur la maintenance des équipements et la fiabilité de la chaîne d'approvisionnement.
+### 📊 Détection d’anomalies
+- Utilisation de l’IA pour surveiller les consommations énergétiques.
+- Identification précoce des anomalies pour améliorer l’efficacité énergétique.
 
-5. **Collaboration avec les Fournisseurs**  
-   - Évaluation de la performance des fournisseurs en fonction de la qualité, des délais et de l’impact carbone des matériaux livrés.
-
-6. **Maintenance Prédictive des Équipements**  
-   - Prédiction des besoins en maintenance pour éviter les pannes et optimiser la durée de vie des équipements.
-
-7. **Détection d'Anomalies avec IA**  
-   - Surveillance des consommations énergétiques via l’intelligence artificielle pour détecter les anomalies et améliorer l’efficacité énergétique.
-
----
-
-## 📊 Données Utilisées
-
-Le projet utilise diverses sources de données pour alimenter le système et effectuer des analyses poussées :
-
-- **Données des Matières Premières** : `Materials.txt` / Table SAP **MARD**
-- **Notifications de Problèmes** : `Notifications.xml` / Table SAP **QMEL**
-- **Données des Équipements** : `Equipements.xlsx`
-- **Données des Fournisseurs** : `Suppliers.csv`
-- **Données Environnementales sur le Climat** : `Climate_Environmental_Data.json` (température, humidité, CO₂, etc.)
-
----
-
-## 🎯 Objectifs
-
-L'objectif de ce projet est de renforcer la **conformité environnementale** tout en optimisant la gestion des **ressources énergétiques** et la **durabilité**. Grâce à l'intégration de **SAP MM** et **SAP PM** et l'utilisation de l'**IA**, ce projet propose une gestion optimisée des émissions de CO₂, des équipements, des matières premières et de la chaîne d'approvisionnement.
-
----
-
-## 👥 Utilisateurs Cibles
-
-- **Responsable de la Conformité Environnementale**
-- **Ingénieurs en Efficacité Énergétique**
-- **Responsables de la Maintenance**
-
----
-
-## 📦 Livrables
-
-- **Rapport d'Analyse** : Exigences techniques et fonctionnalités métiers.
-- **Tableaux de Bord Dynamiques** : Suivi en temps réel des indicateurs clés de performance.
-- **Application Web** : Solution intégrée avec IA pour la gestion énergétique et la maintenance prédictive.
-
----
-
-## 🖥 Installation
-
-### 1. Clonez le Repository
+## 📁 Structure du Projet
 ```bash
-git clone https://github.com/Dansoko22md/Projet-BI-SAP.git
+📂 SAP_MM_PM_Optimization
+├── 📁 data              # Données des matières premières, équipements, fournisseurs
+├── 📁 models            # Algorithmes de maintenance prédictive
+├── 📁 dashboards        # Tableaux de bord pour le suivi en temps réel
+├── 📄 README.md         # Documentation du projet
+└── 📄 requirements.txt  # Dépendances techniques
+```
+
+## 🚀 Technologies Utilisées
+- **SAP MM & PM** : Gestion des matières et maintenance industrielle
+- **Python & Pandas** : Traitement et analyse des données
+- **Machine Learning** : Modèles de maintenance prédictive
+- **Power BI / Tableau** : Visualisation des performances énergétiques
+
+## 📌 Installation & Utilisation
+1. **Cloner le dépôt**
+```bash
+git clone https://github.com/votre-repo.git
+cd SAP_MM_PM_Optimization
+```
+2. **Installer les dépendances**
+```bash
+pip install -r requirements.txt
+```
+3. **Exécuter l'application**
+```bash
+python main.py
+```
+
+## 🎓 Contexte Académique
+Ce projet a été développé dans le cadre du programme **Esprit School of Engineering**. Il vise à appliquer des concepts avancés de gestion des ressources et d’intelligence artificielle pour optimiser la durabilité industrielle.
+
+## 📢 Acknowledgments
+Développé par ECOVISION sous la supervision de Mm Zaineb Abidi et Mm Salma.
+
+## 📎 Liens Utiles
+- 📌 [SAP MARD Table](https://leanx.eu/en/sap/table/mard.html)
+- 📌 [SAP QMEL Table](https://leanx.eu/en/sap/table/qmel.html)
+- 📌 [Esprit School of Engineering](https://www.esprit.tn)
+
+## 🔖 Topics GitHub
+Ajoutez ces "topics" sur GitHub pour améliorer la visibilité du projet :
+`sap-mm`, `sap-pm`, `sustainability`, `machine-learning`, `data-analysis`, `industrial-optimization`, `predictive-maintenance`, `carbon-footprint`, `energy-efficiency`, `supply-chain`, `esprit-school-of-engineering`.
