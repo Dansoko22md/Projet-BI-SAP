@@ -76,6 +76,4 @@ Développé par ECOVISION sous la supervision de Mm Zaineb Abidi et Mm Salma.
 - 📌 [SAP QMEL Table](https://leanx.eu/en/sap/table/qmel.html)
 - 📌 [Esprit School of Engineering](https://www.esprit.tn)
 
-## 🔖 Topics GitHub
-Ajoutez ces "topics" sur GitHub pour améliorer la visibilité du projet :
-`sap-mm`, `sap-pm`, `sustainability`, `machine-learning`, `data-analysis`, `industrial-optimization`, `predictive-maintenance`, `carbon-footprint`, `energy-efficiency`, `supply-chain`, `esprit-school-of-engineering`.
+
