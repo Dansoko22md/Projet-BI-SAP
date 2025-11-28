@@ -53,7 +53,7 @@ Ce projet vise à améliorer la gestion de la durabilité et de la responsabilit
 ## 📌 Installation & Utilisation
 1. **Cloner le dépôt**
 ```bash
-git clone https://github.com/votre-repo.git
+git clone https://github.com/Dansoko22md/Projet-BI-SAP.git
 cd SAP_MM_PM_Optimization
 ```
 2. **Installer les dépendances**
